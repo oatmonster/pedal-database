@@ -1,16 +1,12 @@
-var pg = require( 'pg' );
+const { Pool, Client } = require('pg')
+const connectionString = 'postgres://ulzgrkrn:rkSCKEgR3I8sTs4CGyVkPnmVh0lHXip3@stampy.db.elephantsql.com:5432/ulzgrkrn'
 
-var conString = "postgres://ulzgrkrn:rkSCKEgR3I8sTs4CGyVkPnmVh0lHXip3@stampy.db.elephantsql.com:5432/ulzgrkrn" //Can be found in the Details page
-var client = new pg.Client( conString );
-client.connect( function ( err ) {
-  if ( err ) {
-    return console.error( 'could not connect to postgres', err );
-  }
-  client.query( 'SELECT NOW() AS "theTime"', function ( err, result ) {
-    if ( err ) {
-      return console.error( 'error running query', err );
-    }
-    console.log( result.rows[ 0 ].theTime );
-    client.end();
-  } );
-} );
+const client = new Client({
+  connectionString: connectionString,
+})
+client.connect()
+
+client.query('SELECT NOW()', (err, res) => {
+  console.log(err, res)
+  client.end()
+})
