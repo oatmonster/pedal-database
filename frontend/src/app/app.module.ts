@@ -18,6 +18,7 @@ import { PedalListComponent } from './pedals/pedal-list.component';
 import { PartListComponent } from './part-list/part-list.component';
 
 import { appRoutes } from './routes';
+import { HomeComponent } from './home/home.component';
 
 @NgModule( {
   imports: [
@@ -37,6 +38,7 @@ import { appRoutes } from './routes';
     PedalDetailsComponent,
     NavBarComponent,
     PartListComponent,
+    HomeComponent,
   ],
   providers: [
     ApiService,
