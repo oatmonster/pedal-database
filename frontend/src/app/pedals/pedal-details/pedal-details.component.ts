@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { ApiService } from './shared/api.service';
-import { IPedal } from './shared/pedal.model';
+import { ApiService } from '../shared/api.service';
+import { IPedal } from '../shared/pedal.model';
 
 @Component( {
   selector: 'pedal-details',
-  template: `
-    <div>{{pedal.name}}</div>
-  `
+  templateUrl: './pedal-details.component.html'
 } )
 export class PedalDetailsComponent implements OnInit {
   pedal: IPedal;

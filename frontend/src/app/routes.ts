@@ -1,5 +1,5 @@
 import { PedalListComponent } from './pedals/pedal-list.component';
-import { PedalDetailsComponent } from './pedals/pedal-details.component';
+import { PedalDetailsComponent } from './pedals/pedal-details/pedal-details.component';
 
 export const appRoutes = [
   {

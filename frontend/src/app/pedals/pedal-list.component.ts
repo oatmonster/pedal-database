@@ -11,14 +11,8 @@ export class PedalListComponent implements OnInit {
 
   constructor( private apiService: ApiService ) { }
 
-
-  displayedColumns: string[] = [ 'position', 'name', 'weight', 'symbol' ];
+  displayedColumns: string[] = [ 'id', 'name' ];
   dataSource = this.apiService.getPedals();
-
-  onRowClicked( row ) {
-    console.log( 'Row clicked: ', row );
-  }
-
 
   ngOnInit() {
   }
