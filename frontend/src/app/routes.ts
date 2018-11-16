@@ -3,7 +3,7 @@ import { PedalDetailsComponent } from './pedals/pedal-details/pedal-details.comp
 
 export const appRoutes = [
   {
-    path: 'pedals/all',
+    path: 'pedals',
     component: PedalListComponent,
   },
   {

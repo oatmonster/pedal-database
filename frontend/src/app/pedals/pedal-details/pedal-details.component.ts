@@ -6,7 +6,8 @@ import { IPedal } from '../shared/pedal.model';
 
 @Component( {
   selector: 'pedal-details',
-  templateUrl: './pedal-details.component.html'
+  templateUrl: './pedal-details.component.html',
+  styleUrls: [ './pedal-details.component.scss' ]
 } )
 export class PedalDetailsComponent implements OnInit {
   pedal: IPedal;
