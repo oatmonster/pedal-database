@@ -1,9 +1,9 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/frontend/dist
-/frontend/tmp
-/frontend/out-tsc
+/client/dist
+/client/tmp
+/client/out-tsc
 
 # dependencies
 */node_modules
