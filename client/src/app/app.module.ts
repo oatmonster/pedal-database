@@ -12,13 +12,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { PedalAppComponent } from './pedal-app.component';
 import { PedalDetailsComponent } from './pedals/pedal-details/pedal-details.component';
 import { NavBarComponent } from './navbar/nav-bar.component';
-
-import { ApiService } from './pedals/shared/api.service';
+import { HomeComponent } from './home/home.component';
 import { PedalListComponent } from './pedals/pedal-list.component';
 import { PartListComponent } from './part-list/part-list.component';
+import { ApiService } from './pedals/shared/api.service';
 
 import { appRoutes } from './routes';
-import { HomeComponent } from './home/home.component';
+
 
 @NgModule( {
   imports: [

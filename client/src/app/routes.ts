@@ -14,5 +14,12 @@ export const appRoutes = [
   {
     path: 'pedals/:id',
     component: PedalDetailsComponent,
+  },
+  {
+    path: '', redirectTo: '/home', pathMatch: 'full'
+  },
+  {
+    path: 'user', loadChildren: './user/user.module#UserModule'
+
   }
 ]

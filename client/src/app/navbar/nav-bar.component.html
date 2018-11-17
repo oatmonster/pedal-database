@@ -4,14 +4,15 @@
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse align-bottom" id="navbarNavAltMarkup">
-    <div class="navbar-nav mr-auto align-bottom">
+  <div class="collapse navbar-collapse">
+    <div class="navbar-nav mr-auto">
       <a class="nav-item nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
       <a class="nav-item nav-link" [routerLink]="['/pedals']" routerLinkActive="active">All Pedals</a>
     </div>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <a class="nav-item nav-link" [routerLink]="['/user/login']" routerLinkActive="active">Login</a>
     </form>
   </div>
 </nav>
