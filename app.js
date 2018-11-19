@@ -1,24 +1,23 @@
-var express = require( 'express' );
-var cors = require( 'cors' );
-var bodyParser = require( 'body-parser' );
+const express = require( 'express' );
+const cors = require( 'cors' );
+const bodyParser = require( 'body-parser' );
+const path = require( 'path' );
+const passport = require( 'passport' );
+
+require( './api/models/db' );
+require( './api/config/passport' );
+
 var app = express();
 
-var posts = [
-  { message: 'hello' },
-  { message: 'hi' },
-];
+app.use( passport.initialize() );
+app.use( '/api', routesApi )
 
-app.use( cors() );
-app.use( bodyParser.json() );
-
-app.get( '/posts', ( req, res ) => {
-  res.send( posts );
+// Catch unauthorized errors. 
+app.use( function ( err, req, res, next ) {
+  if ( err.name === 'UnauthorizedError' ) {
+    res.status( 401 );
+    res.json( { "message": err.name + ": " + err.message } );
+  }
 } );
 
-app.post( '/register', ( req, res ) => {
-  var userData = req.body;
-  res.sendStatus( 200 );
-  console.log( userData );
-} );
-
-app.listen( 3000 );
+module.exports = app;
