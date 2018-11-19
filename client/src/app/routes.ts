@@ -3,10 +3,7 @@ import { PedalDetailsComponent } from './pedals/pedal-details/pedal-details.comp
 import { HomeComponent } from './home/home.component';
 
 export const appRoutes = [
-  {
-    path: 'home',
-    component: HomeComponent,
-  },
+
   {
     path: 'pedals',
     component: PedalListComponent,
@@ -16,10 +13,15 @@ export const appRoutes = [
     component: PedalDetailsComponent,
   },
   {
-    path: '', redirectTo: '/home', pathMatch: 'full'
+    path: 'pedals/:id/:name',
+    component: PedalDetailsComponent,
   },
   {
     path: 'user', loadChildren: './user/user.module#UserModule'
 
-  }
+  },
+  {
+    path: '',
+    component: HomeComponent,
+  },
 ]
