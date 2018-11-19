@@ -1,20 +1,42 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-  <a class="navbar-brand">The Pedal Database</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar navbar-expand-md navbar-light">
   <div class="collapse navbar-collapse">
+    <div class="navbar-nav navbar-right ml-auto">
+      <a class="nav-item nav-link" [routerLink]="['/user/login']" routerLinkActive="active">Login</a>
+      <a class="nav-item navbar-text">or</a>
+      <a class="nav-item nav-link" [routerLink]="['/user/register']" routerLinkActive="active">Register</a>
+    </div>
+  </div>
+</nav>
+<div class="d-none d-md-block"><img class="logo" src="../../assets/images/logo.png">
+  <hr>
+</div>
+<nav class="navbar navbar-expand-md navbar-light">
+  <div class="d-flex">
+    <a class="navbar-brand d-none d-md-block">The Pedal Database</a>
+    <div class="d-md-none flex-shrink-1 mr-2">
+      <img class="logo" src="../../assets/images/logo.png">
+    </div>
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="collapse navbar-collapse" data-toggle="collapse" data-target=".navar-collapse.show" id="mainNavbar">
+    <hr class="d-md-none">
+    <form class="form-inline d-md-none">
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+    </form>
     <div class="navbar-nav mr-auto">
       <a class="nav-item nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
       <a class="nav-item nav-link" [routerLink]="['/pedals']" routerLinkActive="active">All Pedals</a>
     </div>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      <a class="nav-item nav-link" [routerLink]="['/user/register']" routerLinkActive="active">Register</a>
-      <span>or</span>
-      <a class="nav-item nav-link" [routerLink]="['/user/login']" routerLinkActive="active">Login</a>
+    <hr>
+    <form class="form-inline d-none d-md-block">
+      <input class="form-control" type="search" placeholder="Search" aria-label="Search">
     </form>
+    <div class="navbar-nav d-md-none">
+      <a class="nav-item nav-link" [routerLink]="['/user/login']" routerLinkActive="active">Login</a>
+      <a class="nav-item nav-link" [routerLink]="['/user/register']" routerLinkActive="active">Register</a>
+    </div>
   </div>
 </nav>

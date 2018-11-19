@@ -1,3 +1,9 @@
-nav {
-    margin-bottom: 2em;
+img.logo {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+}
+
+.nav-item, .navbar-brand {
+  font-weight: 600;
 }
