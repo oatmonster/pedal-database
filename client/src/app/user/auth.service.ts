@@ -65,6 +65,7 @@ export class AuthService {
       map( ( data: TokenResponse ) => {
         if ( data.token ) {
           this.saveToken( data.token );
+          console.log( data.token );
         }
         return data;
       } )
