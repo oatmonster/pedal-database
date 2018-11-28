@@ -1,6 +1,6 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { IPedal } from './pedal.model';
+import { IPedal } from '../pedals/shared/pedal.model';
 
 const ELEMENT_DATA: IPedal[] = [
   {

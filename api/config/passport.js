@@ -13,7 +13,7 @@ passport.use( new LocalStrategy( { usernameField: 'email' },
 
     user.setPassword( "password" );
 
-    if ( username != user.email ) {
+    if ( username.toLowerCase != user.email ) {
       return done( null, false, {
         message: 'Invalid username'
       } );
@@ -27,7 +27,7 @@ passport.use( new LocalStrategy( { usernameField: 'email' },
 
     return done( null, user );
 
-    // User.findOne( { email: username }, function ( err, user ) {
+    //  User.findOne( { email: username.toLowerCase }, function ( err, user ) {
     //   if ( err ) { return done( err ); }
     //   // Return if user not found in database.
     //   if ( !user ) {

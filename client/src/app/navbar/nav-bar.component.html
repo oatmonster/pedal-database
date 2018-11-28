@@ -1,9 +1,13 @@
 <nav class="navbar navbar-expand-md navbar-light">
   <div class="collapse navbar-collapse">
     <div class="navbar-nav navbar-right ml-auto">
-      <a class="nav-item nav-link" [routerLink]="['/user/login']" routerLinkActive="active">Login</a>
-      <a class="nav-item navbar-text">or</a>
-      <a class="nav-item nav-link" [routerLink]="['/user/register']" routerLinkActive="active">Register</a>
+      <a *ngIf="!authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/login']" routerLinkActive="active">Login</a>
+      <a *ngIf="!authService.isLoggedIn()" class="nav-item navbar-text">or</a>
+      <a *ngIf="!authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/register']" routerLinkActive="active">Register</a>
+      <a *ngIf="authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/profile']" routerLinkActive="active">My
+        Profile</a>
+      <a *ngIf="authService.isLoggedIn()" style="cursor: pointer;" class="nav-item nav-link" (click)="authService.logout()"
+        routerLinkActive="active">Logout</a>
     </div>
   </div>
 </nav>
@@ -35,8 +39,12 @@
       <input class="form-control" type="search" placeholder="Search" aria-label="Search">
     </form>
     <div class="navbar-nav d-md-none">
-      <a class="nav-item nav-link" [routerLink]="['/user/login']" routerLinkActive="active">Login</a>
-      <a class="nav-item nav-link" [routerLink]="['/user/register']" routerLinkActive="active">Register</a>
+      <a *ngIf="!authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/login']" routerLinkActive="active">Login</a>
+      <a *ngIf="!authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/register']" routerLinkActive="active">Register</a>
+      <a *ngIf="authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/profile']" routerLinkActive="active">My
+        Profile</a>
+      <a *ngIf="authService.isLoggedIn()" style="cursor: pointer;" class="nav-item nav-link" (click)="authService.logout()"
+        routerLinkActive="active">Logout</a>
     </div>
   </div>
 </nav>

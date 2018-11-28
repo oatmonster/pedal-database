@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService, TokenPayload } from './auth.service';
+import { AuthService, TokenPayload } from '../common/auth.service';
 import { Router } from '@angular/router';
 
 @Component( {
@@ -11,10 +11,10 @@ export class LoginComponent {
     password: ''
   };
 
-  constructor( private auth: AuthService, private router: Router ) { }
+  constructor( private authService: AuthService, private router: Router ) { }
 
   login() {
-    this.auth.login( this.credentials ).subscribe( () => {
+    this.authService.login( this.credentials ).subscribe( () => {
       this.router.navigateByUrl( '/' );
     }, ( err ) => {
       console.error( err );

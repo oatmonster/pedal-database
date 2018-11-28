@@ -46,10 +46,29 @@ export class AuthService {
     return this.token;
   }
 
-  private logout(): void {
-    this.token = '';
-    window.localStorage.removeItem( 'mean-token' );
-    this.router.navigate( [ 'home' ] );
+  public getUserDetails(): UserDetails {
+    const token = this.getToken();
+    let payload;
+    if ( token ) {
+      payload = token.split( '.' )[ 1 ];
+      payload = window.atob( payload );
+      return JSON.parse( payload );
+    } else {
+      return null;
+    }
+  }
+
+  public isLoggedIn(): boolean {
+    const user = this.getUserDetails();
+    var loggedIn: boolean = false;
+    if ( user ) {
+      console.log( user );
+      loggedIn = user.exp > Date.now() / 1000;
+    } else {
+      loggedIn = false;
+    }
+    console.log( loggedIn );
+    return loggedIn;
   }
 
   private request( method: 'post' | 'get', type: 'login' | 'register' | 'profile', user?: TokenPayload ): Observable<any> {
@@ -84,5 +103,11 @@ export class AuthService {
 
   public profile(): Observable<any> {
     return this.request( 'get', 'profile' );
+  }
+
+  private logout(): void {
+    this.token = '';
+    window.localStorage.removeItem( 'mean-token' );
+    this.router.navigate( [ '' ] );
   }
 }

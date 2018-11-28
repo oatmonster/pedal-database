@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { HttpClientModule } from '@angular/common/http';
 
 import { PedalAppComponent } from './pedal-app.component';
 import { PedalDetailsComponent } from './pedals/pedal-details/pedal-details.component';
@@ -15,7 +16,8 @@ import { NavBarComponent } from './navbar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { PedalListComponent } from './pedals/pedal-list.component';
 import { PartListComponent } from './part-list/part-list.component';
-import { ApiService } from './pedals/shared/api.service';
+import { ApiService } from './common/api.service';
+import { AuthService } from './common/auth.service';
 
 import { appRoutes } from './routes';
 
@@ -24,6 +26,7 @@ import { appRoutes } from './routes';
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     RouterModule.forRoot( appRoutes ),
     MatTableModule,
     MatToolbarModule,
@@ -42,6 +45,7 @@ import { appRoutes } from './routes';
   ],
   providers: [
     ApiService,
+    AuthService,
   ],
   bootstrap: [
     PedalAppComponent,

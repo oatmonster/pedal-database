@@ -23,5 +23,6 @@ export const appRoutes = [
   {
     path: '',
     component: HomeComponent,
+    pathMatch: 'full',
   },
 ]

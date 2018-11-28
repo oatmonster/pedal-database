@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Location } from '@angular/common';
 
-import { ApiService } from '../shared/api.service';
+import { ApiService } from '../../common/api.service';
 import { IPedal } from '../shared/pedal.model';
 
 @Component( {
