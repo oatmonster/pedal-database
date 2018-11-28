@@ -1,23 +1,22 @@
-const express = require( 'express' );
-const cors = require( 'cors' );
-const bodyParser = require( 'body-parser' );
-const path = require( 'path' );
-const passport = require( 'passport' );
+var express = require( 'express' );
+var path = require( 'path' );
+var bodyParser = require( 'body-parser' );
+var cors = require( 'cors' );
+var passport = require( 'passport' );
 
 require( './api/models/db' );
 require( './api/config/passport' );
 
+var routesApi = require( './api/routes/index' );
+
 var app = express();
 
-app.use( passport.initialize() );
-app.use( '/api', routesApi )
+app.use( bodyParser.json() );
+app.use( bodyParser.urlencoded( { extended: false } ) );
+app.use( cors() );
 
-// Catch unauthorized errors. 
-app.use( function ( err, req, res, next ) {
-  if ( err.name === 'UnauthorizedError' ) {
-    res.status( 401 );
-    res.json( { "message": err.name + ": " + err.message } );
-  }
-} );
+app.use( passport.initialize() );
+
+app.use( '/api', routesApi );
 
 module.exports = app;
