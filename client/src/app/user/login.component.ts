@@ -11,6 +11,8 @@ export class LoginComponent {
     password: ''
   };
 
+  valid: boolean = true;
+
   constructor( private authService: AuthService, private router: Router ) { }
 
   login() {
@@ -18,6 +20,8 @@ export class LoginComponent {
       this.router.navigateByUrl( '/' );
     }, ( err ) => {
       console.error( err );
+      this.credentials.password = "";
+      this.valid = false;
     } );
   }
 }

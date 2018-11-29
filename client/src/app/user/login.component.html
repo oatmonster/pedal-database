@@ -1,17 +1,20 @@
 <h1>Login</h1>
 <hr>
 <div class="col-md-4">
-  <form (submit)="login()" autocomplete="off">
+  <form (ngSubmit)="login()" autocomplete="off" #loginForm="ngForm">
+
+    <div [hidden]="valid" class="alert alert-danger">
+      Invalid email or password
+    </div>
     <div class="form-group">
-      <label for="userName">User Name:</label>
-      <input id="userName" type="text" class="form-control" name="email" placeholder="User Name..." [(ngModel)]="credentials.email" />
+      <label for="userName">E-Mail:</label>
+      <input id="userName" type="text" class="form-control" name="email" required placeholder="E-Mail..." [(ngModel)]="credentials.email" />
     </div>
     <div class="form-group">
       <label for="password">Password:</label>
-      <input id="password" type="password" class="form-control" name="password" placeholder="Password..." [(ngModel)]="credentials.password" />
+      <input id="password" type="password" class="form-control" name="password" required placeholder="Password..."
+        [(ngModel)]="credentials.password" #passwordControl="ngModel" />
     </div>
-
-    <button type="submit" class="btn btn-primary">Login</button>
-    <button type="button" class="btn btn-default">Cancel</button>
+    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Login</button>
   </form>
 </div>
