@@ -34,13 +34,13 @@ export class AuthService {
   constructor( private http: HttpClient, private router: Router ) { }
 
   private saveToken( token: string ): void {
-    localStorage.setItem( 'mean-token', token );
+    localStorage.setItem( 'auth-token', token );
     this.token = token;
   }
 
   private getToken(): string {
     if ( !this.token ) {
-      this.token = localStorage.getItem( 'mean-token' );
+      this.token = localStorage.getItem( 'auth-token' );
     }
 
     return this.token;
@@ -62,12 +62,10 @@ export class AuthService {
     const user = this.getUserDetails();
     var loggedIn: boolean = false;
     if ( user ) {
-      console.log( user );
       loggedIn = user.exp > Date.now() / 1000;
     } else {
       loggedIn = false;
     }
-    console.log( loggedIn );
     return loggedIn;
   }
 
@@ -84,7 +82,6 @@ export class AuthService {
       map( ( data: TokenResponse ) => {
         if ( data.token ) {
           this.saveToken( data.token );
-          console.log( data.token );
         }
         return data;
       } )
@@ -107,7 +104,7 @@ export class AuthService {
 
   private logout(): void {
     this.token = '';
-    window.localStorage.removeItem( 'mean-token' );
+    window.localStorage.removeItem( 'auth-token' );
     this.router.navigate( [ '' ] );
   }
 }

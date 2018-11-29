@@ -27,7 +27,7 @@ import { appRoutes } from './routes';
     BrowserModule,
     HttpModule,
     HttpClientModule,
-    RouterModule.forRoot( appRoutes ),
+    RouterModule.forRoot( appRoutes, { scrollPositionRestoration: 'enabled' } ),
     MatTableModule,
     MatToolbarModule,
     MatButtonModule,

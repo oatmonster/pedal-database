@@ -13,7 +13,7 @@ passport.use( new LocalStrategy( { usernameField: 'email' },
 
     user.setPassword( "password" );
 
-    if ( username.toLowerCase != user.email ) {
+    if ( username.toLowerCase() != user.email ) {
       return done( null, false, {
         message: 'Invalid username'
       } );
