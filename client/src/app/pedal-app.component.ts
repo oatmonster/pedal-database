@@ -5,8 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: './pedal-app.component.html',
   styles: [ `
     div.padded {
-      max-width: 80%;
+      max-width: 90%;
       margin: auto;
+      padding-bottom: 10em;
     }
   `],
 } )

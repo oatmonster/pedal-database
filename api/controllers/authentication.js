@@ -5,7 +5,7 @@ var User = mongoose.model( 'User' );
 module.exports.register = function ( req, res ) {
   var user = new User();
 
-  user.username = req.body.username;
+  user.username = "Test User";
   user.email = req.body.email;
 
   user.setPassword( req.body.password );

@@ -8,7 +8,7 @@ passport.use( new LocalStrategy( { usernameField: 'email' },
 
     var user = new User();
 
-    user.username = "test";
+    user.username = "Test User";
     user.email = "test@test.com";
 
     user.setPassword( "password" );

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from '../common/api.service';
+import { IPedal } from '../pedals/shared/pedal.model';
 
 @Component( {
   selector: 'pedal-list',
@@ -9,12 +10,14 @@ import { ApiService } from '../common/api.service';
 } )
 export class PedalListComponent implements OnInit {
 
+  pedals: IPedal[];
+  displayedColumns: string[];
+
   constructor( private apiService: ApiService ) { }
 
-  displayedColumns: string[] = [ 'id', 'name' ];
-  dataSource = this.apiService.getPedals();
-
   ngOnInit() {
+    this.pedals = this.apiService.getPedals();
+    this.displayedColumns = [ 'id', 'name' ];
   }
 
 }

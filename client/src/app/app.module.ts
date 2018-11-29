@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
@@ -44,6 +44,7 @@ import { appRoutes } from './routes';
     HomeComponent,
   ],
   providers: [
+    Title,
     ApiService,
     AuthService,
   ],
