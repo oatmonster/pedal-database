@@ -9,7 +9,7 @@ import { AuthService, TokenPayload } from '../common/auth.service';
 export class RegisterComponent {
   credentials: TokenPayload = {
     email: '',
-    name: '',
+    username: '',
     password: ''
   };
 

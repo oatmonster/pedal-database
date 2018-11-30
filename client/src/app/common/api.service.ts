@@ -65,4 +65,8 @@ export class ApiService {
   getPedal( id: number ): IPedal {
     return ELEMENT_DATA.find( p => p.id === id );
   }
+
+  getUser( username: string ): string {
+    return username;
+  }
 }

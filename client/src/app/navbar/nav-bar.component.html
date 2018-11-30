@@ -4,7 +4,8 @@
       <a *ngIf="!authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/login']" routerLinkActive="active">Login</a>
       <a *ngIf="!authService.isLoggedIn()" class="nav-item navbar-text">or</a>
       <a *ngIf="!authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/register']" routerLinkActive="active">Register</a>
-      <a *ngIf="authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/profile']" routerLinkActive="active">{{authService.getUserDetails()?.username}}</a>
+      <a *ngIf="authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user', authService.getUserDetails()?.username]"
+        routerLinkActive="active">{{authService.getUserDetails()?.username}}</a>
       <a *ngIf="authService.isLoggedIn()" style="cursor: pointer;" class="nav-item nav-link" (click)="authService.logout()"
         routerLinkActive="active">Logout</a>
     </div>

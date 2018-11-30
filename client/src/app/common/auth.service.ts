@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators/map';
 export interface UserDetails {
   id: string;
   email: string;
-  name: string;
+  username: string;
   exp: number;
   iat: number;
 }
@@ -20,7 +20,7 @@ interface TokenResponse {
 export interface TokenPayload {
   email: string;
   password: string;
-  name?: string;
+  username?: string;
 }
 
 
