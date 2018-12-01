@@ -1,6 +1,0 @@
-{
-  "/api": {
-    "target": "http://pedal-database-dev.us-west-2.elasticbeanstalk.com",
-    "secure": false
-  }
-}

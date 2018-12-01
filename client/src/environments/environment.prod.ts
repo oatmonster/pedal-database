@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  baseUrl: "http://pedal-database-dev.us-west-2.elasticbeanstalk.com"
 };

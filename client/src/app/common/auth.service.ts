@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators/map';
 
+import { environment } from '../../environments/environment';
+
 
 export interface UserDetails {
   id: string;
@@ -73,9 +75,9 @@ export class AuthService {
     let base;
 
     if ( method === 'post' ) {
-      base = this.http.post( `/api/${type}`, user );
+      base = this.http.post( environment.baseUrl + `/api/${type}`, user );
     } else {
-      base = this.http.get( `/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` } } );
+      base = this.http.get( environment.baseUrl + `/api/${type}`, { headers: { Authorization: `Bearer ${this.getToken()}` } } );
     }
 
     const request = base.pipe(
