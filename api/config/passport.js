@@ -1,48 +1,38 @@
 var passport = require( 'passport' );
 var LocalStrategy = require( 'passport-local' ).Strategy;
-var mongoose = require( 'mongoose' );
-var User = mongoose.model( 'User' );
+var User = require( '../models/users' );
+var client = require( '../models/db' );
 
 passport.use( new LocalStrategy( { usernameField: 'email' },
   function ( username, password, done ) {
 
-    var user = new User();
+    const query = 'SELECT * FROM users WHERE email = $1';
+    const params = [ username ];
 
-    user.username = "Test User";
-    user.email = "test@test.com";
+    client.query( query, params, ( err, res ) => {
+      if ( err ) {
+        console.log( err.stack )
+        return done( err );
+      }
+      if ( res.rowCount === 0 ) {
+        return done( null, false, {
+          message: 'Invalid email or password'
+        } );
+      }
 
-    user.setPassword( "password" );
+      user = new User();
+      user.email = res.rows[ 0 ].email;
+      user.username = res.rows[ 0 ].username;
+      user.salt = res.rows[ 0 ].salt;
+      user.hash = res.rows[ 0 ].hash;
 
-    if ( username.toLowerCase() != user.email ) {
-      return done( null, false, {
-        message: 'Invalid username'
-      } );
-    }
+      if ( !user.validPassword( password ) ) {
+        return done( null, false, {
+          message: 'Invalid email or password'
+        } );
+      }
 
-    if ( !user.validPassword( password ) ) {
-      return done( null, false, {
-        message: 'Invalid password'
-      } );
-    }
-
-    return done( null, user );
-
-    //  User.findOne( { email: username.toLowerCase }, function ( err, user ) {
-    //   if ( err ) { return done( err ); }
-    //   // Return if user not found in database.
-    //   if ( !user ) {
-    //     return done( null, false, {
-    //       message: 'Invalid email or password'
-    //     } );
-    //   }
-    //   // Return if password is wrong.
-    //   if ( !user.validPassword( password ) ) {
-    //     return done( null, false, {
-    //       message: 'Invalid email or password'
-    //     } );
-    //   }
-    //   // If credentials are correct, return the user object.
-    //   return done( null, user );
-    // } );
+      return done( null, user );
+    } );
   }
 ) );

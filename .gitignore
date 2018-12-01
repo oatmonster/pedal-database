@@ -38,9 +38,6 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# Other
-getting-started.js
-
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
