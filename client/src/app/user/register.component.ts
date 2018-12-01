@@ -17,7 +17,7 @@ export class RegisterComponent {
 
   register() {
     this.authService.register( this.credentials ).subscribe( () => {
-      this.router.navigateByUrl( '/profile' );
+      this.router.navigateByUrl( '/' );
     }, ( err ) => {
       console.error( err );
     } );
