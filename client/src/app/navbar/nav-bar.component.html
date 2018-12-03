@@ -20,8 +20,7 @@
     <div class="d-md-none flex-shrink-1 mr-2">
       <img class="logo" src="../../assets/images/logo.png">
     </div>
-    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#mainNavbar" aria-controls="mainNavbar"
-      aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#mainNavbar" id="navbar-toggler">
       <span class="navbar-toggler-icon"></span>
     </button>
   </div>
@@ -30,7 +29,7 @@
     <form class="form-inline d-md-none">
       <input class="form-control" type="search" placeholder="Search" aria-label="Search">
     </form>
-    <div class="navbar-nav mr-auto">
+    <div class="navbar-nav mr-auto" data-toggle="collapse" data-target=".navbar-collapse.show">
       <a class="nav-item nav-link" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['']" routerLinkActive="active">Home</a>
       <a class="nav-item nav-link" [routerLink]="['/pedals']" routerLinkActive="active">All Pedals</a>
     </div>
@@ -38,7 +37,7 @@
     <form class="form-inline d-none d-md-block">
       <input class="form-control" type="search" placeholder="Search" aria-label="Search">
     </form>
-    <div class="navbar-nav d-md-none">
+    <div class="navbar-nav d-md-none" data-toggle="collapse" data-target=".navbar-collapse.show">
       <a *ngIf="!authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/login']" routerLinkActive="active">Login</a>
       <a *ngIf="!authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/register']" routerLinkActive="active">Register</a>
       <a *ngIf="authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/profile']" routerLinkActive="active">My

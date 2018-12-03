@@ -2,6 +2,9 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { IPedal } from '../pedals/shared/pedal.model';
 
+import { environment } from '../../environments/environment';
+
+
 const ELEMENT_DATA: IPedal[] = [
   {
     id: 1, name: 'Hydrogen', videoUrl: 'https://www.youtube.com/embed/FEciLhiKcQA', desc: `
@@ -49,6 +52,7 @@ const ELEMENT_DATA: IPedal[] = [
 export class ApiService {
 
   messages: any[];
+  pedals: IPedal[];
 
   constructor( private http: Http ) { };
 
@@ -59,7 +63,11 @@ export class ApiService {
   }
 
   getPedals(): IPedal[] {
-    return ELEMENT_DATA;
+    this.http.get( environment.baseUrl + '/api/pedals' ).subscribe( res => {
+      this.pedals = res.json();
+    } )
+    console.log( this.pedals );
+    return this.pedals;
   }
 
   getPedal( id: number ): IPedal {
