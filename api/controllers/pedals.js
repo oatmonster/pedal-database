@@ -1,6 +1,6 @@
 var client = require( '../models/db' );
 
-module.exports.getPedals = async function ( req, res ) {
+module.exports.getPedals = function ( req, res ) {
 
   client.query( 'SELECT * FROM pedals', ( err, result ) => {
     if ( err ) {
@@ -10,7 +10,7 @@ module.exports.getPedals = async function ( req, res ) {
       res.status( 200 );
       res.send( result.rows );
     }
-  } )
+  } );
 }
 
 module.exports.getPedal = function ( req, res ) {

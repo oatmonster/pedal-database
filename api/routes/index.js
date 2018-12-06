@@ -2,13 +2,13 @@ var express = require( 'express' );
 var router = express.Router();
 var jwt = require( 'express-jwt' );
 var auth = jwt( {
-  secret: 'THE_SECRET',
-  userProperty: 'payload'
+  secret: 'THE_SECRET'
 } );
 
 //var ctrlProfile = require( '../controllers/profile' );
 var ctrlAuth = require( '../controllers/authentication' );
 var ctrlPedals = require( '../controllers/pedals' );
+var ctrlParts = require( '../controllers/parts' );
 
 // profile
 //router.get( '/profile', auth, ctrlProfile.profileRead );
@@ -20,5 +20,8 @@ router.post( '/login', ctrlAuth.login );
 // pedals
 router.get( '/pedals', ctrlPedals.getPedals );
 router.get( '/pedals/:id', ctrlPedals.getPedal );
+
+// parts
+router.get( '/parts/:type/:id', auth, ctrlParts.getParts );
 
 module.exports = router;

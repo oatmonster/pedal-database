@@ -6,5 +6,5 @@
 </div>
 <div class="multi-line-text">{{pedal?.desc}}</div>
 
-<part-list></part-list>
+<part-list *ngIf="!!pedal" [type]="pedal" [id]="pedal.id"></part-list>
 <!-- </div> -->

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
-import { PartModule } from '../part/parts.module';
+import { PartModule } from '../part/part.module';
 
 import { ProfileComponent } from './profile.component';
 import { LoginComponent } from './login.component';

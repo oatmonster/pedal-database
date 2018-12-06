@@ -26,7 +26,7 @@ export class PedalDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.apiService.getPedal( +this.route.snapshot.params[ 'id' ] ).subscribe( res => {
-      this.pedal = res.json();
+      this.pedal = res;
       this.location.replaceState( '/pedals/' + this.pedal.id + '/' + this.pedal.name );
       this.titleService.setTitle( 'Pedal Database: ' + this.pedal.name );
     } )

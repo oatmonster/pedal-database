@@ -6,13 +6,13 @@ const client = new Client( {
   connectionString: connectionString,
 } )
 
-client.connect( ( err ) => {
-  if ( err ) {
-    console.error( 'POSTGRES: Connection error', err.stack );
-  } else {
-    console.log( 'POSTGRES: Connected' );
-  }
-} );
+// client.connect( ( err ) => {
+//   if ( err ) {
+//     console.error( 'POSTGRES: Connection error', err.stack );
+//   } else {
+//     console.log( 'POSTGRES: Connected' );
+//   }
+// } );
 
 // CAPTURE APP TERMINATION / RESTART EVENTS
 // To be called when process is restarted or terminated
