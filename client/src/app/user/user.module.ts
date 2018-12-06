@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+import { PartModule } from '../part/parts.module';
+
 import { ProfileComponent } from './profile.component';
 import { LoginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
@@ -14,6 +16,7 @@ import { userRoutes } from './user.routes';
     CommonModule,
     FormsModule,
     RouterModule.forChild( userRoutes ),
+    PartModule,
   ],
   declarations: [
     ProfileComponent,

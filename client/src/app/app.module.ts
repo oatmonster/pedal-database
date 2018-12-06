@@ -10,12 +10,13 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { HttpClientModule } from '@angular/common/http';
 
+import { PartModule } from './part/parts.module';
+
 import { PedalAppComponent } from './pedal-app.component';
 import { PedalDetailsComponent } from './pedals/pedal-details/pedal-details.component';
 import { NavBarComponent } from './navbar/nav-bar.component';
 import { HomeComponent } from './home/home.component';
 import { PedalListComponent } from './pedals/pedal-list.component';
-import { PartListComponent } from './part-list/part-list.component';
 import { ApiService } from './common/api.service';
 import { AuthService } from './common/auth.service';
 
@@ -34,13 +35,13 @@ import { appRoutes } from './routes';
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
+    PartModule,
   ],
   declarations: [
     PedalAppComponent,
     PedalListComponent,
     PedalDetailsComponent,
     NavBarComponent,
-    PartListComponent,
     HomeComponent,
   ],
   providers: [
