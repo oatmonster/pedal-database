@@ -28,3 +28,7 @@ module.exports.getPedal = function ( req, res ) {
     }
   } );
 }
+
+module.exports.getBuildablePedals = function ( req, res ) {
+
+}
