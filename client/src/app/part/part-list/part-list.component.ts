@@ -13,10 +13,6 @@ export class PartListComponent implements OnInit {
   @Input() id: number;
 
   displayedColumns: string[] = [ 'type', 'value', 'count' ];
-  dataSource = [
-    { id: 1, type: 'Resistor', value: '100k R', count: 10 },
-    { id: 2, type: 'Capacitor', value: '50 pF', count: 5 },
-  ];
   parts: IPart[];
 
   constructor( private apiService: ApiService ) { }

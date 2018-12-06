@@ -1,7 +1,7 @@
 var client = require( '../models/db' );
 
 module.exports.getParts = function ( req, res ) {
-  if ( req.params.type === 'pedal' ) {
+  if ( req.params.type == 'pedal' ) {
     res.send( [ {
       id: 1,
       type: 'resistor',
@@ -9,7 +9,7 @@ module.exports.getParts = function ( req, res ) {
       count: '15'
     } ] );
   }
-  else if ( req.params.type === 'user' && req.params.id === req.user.id ) {
+  else if ( req.params.type == 'user' && req.params.id == req.user.id ) {
     res.send( [ {
       id: 1,
       type: 'resistor',

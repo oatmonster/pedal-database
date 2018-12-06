@@ -22,6 +22,6 @@ router.get( '/pedals', ctrlPedals.getPedals );
 router.get( '/pedals/:id', ctrlPedals.getPedal );
 
 // parts
-router.get( '/parts/:type/:id', auth, ctrlParts.getParts );
+router.get( '/parts/:type/:id', ctrlParts.getParts );
 
 module.exports = router;
