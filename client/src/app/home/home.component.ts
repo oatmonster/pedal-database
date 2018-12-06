@@ -10,12 +10,10 @@ import { IPedal } from '../pedals/shared/pedal.model';
 } )
 export class HomeComponent implements OnInit {
 
-  pedals: IPedal[]
-
   constructor( private apiService: ApiService ) { }
 
   ngOnInit() {
-    this.pedals = this.apiService.getPedals();
+    this.apiService.getPedals();
   }
 
 }

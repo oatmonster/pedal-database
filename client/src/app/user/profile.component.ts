@@ -8,6 +8,7 @@ import { ApiService } from '../common/api.service';
   template: `
     <h1>Profile Component!</h1>
     <div>{{user}}</div>
+    <part-list></part-list>
 
   `,
 } )

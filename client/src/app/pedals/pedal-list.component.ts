@@ -10,13 +10,12 @@ import { IPedal } from '../pedals/shared/pedal.model';
 } )
 export class PedalListComponent implements OnInit {
 
-  pedals: IPedal[];
   displayedColumns: string[];
 
   constructor( private apiService: ApiService ) { }
 
   ngOnInit() {
-    this.pedals = this.apiService.getPedals();
+    this.apiService.getPedals();
     this.displayedColumns = [ 'id', 'name' ];
   }
 

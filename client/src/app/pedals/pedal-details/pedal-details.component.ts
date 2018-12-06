@@ -13,6 +13,7 @@ import { IPedal } from '../shared/pedal.model';
   styleUrls: [ './pedal-details.component.scss' ]
 } )
 export class PedalDetailsComponent implements OnInit, OnDestroy {
+
   pedal: IPedal;
 
   constructor(
@@ -24,9 +25,11 @@ export class PedalDetailsComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.pedal = this.apiService.getPedal( +this.route.snapshot.params[ 'id' ] );
-    this.location.replaceState( '/pedals/' + this.pedal.id + '/' + this.pedal.name );
-    this.titleService.setTitle( 'Pedal Database: ' + this.pedal.name );
+    this.apiService.getPedal( +this.route.snapshot.params[ 'id' ] ).subscribe( res => {
+      this.pedal = res.json();
+      this.location.replaceState( '/pedals/' + this.pedal.id + '/' + this.pedal.name );
+      this.titleService.setTitle( 'Pedal Database: ' + this.pedal.name );
+    } )
   }
 
   ngOnDestroy() {
@@ -34,6 +37,7 @@ export class PedalDetailsComponent implements OnInit, OnDestroy {
   }
 
   videoUrl(): SafeResourceUrl {
+    console.log( this.pedal );
     return this.sanitizer.bypassSecurityTrustResourceUrl( this.pedal.videoUrl );
   }
 }

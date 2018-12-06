@@ -19,7 +19,6 @@ import { userRoutes } from './user.routes';
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
-
   ],
   providers: [
   ]
