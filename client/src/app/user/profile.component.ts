@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from '../common/api.service';
 
@@ -8,16 +7,17 @@ import { ApiService } from '../common/api.service';
   template: `
     <h1>Profile Component!</h1>
     <div>{{user}}</div>
-    <part-list></part-list>
+    <part-list [type]="'user'" [id]="1"></part-list>
   `,
 } )
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
 
   user: any;
 
-  constructor( private apiService: ApiService, private route: ActivatedRoute ) {
-    route.params.subscribe( val => {
-      this.user = this.apiService.getUser( this.route.snapshot.params[ 'username' ] );
-    } );
+  constructor( private apiService: ApiService ) {
+  }
+
+  ngOnInit() {
+    this.user = this.apiService.getUser( "asdfasdf" );
   }
 }

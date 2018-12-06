@@ -42,7 +42,6 @@ export class PedalDetailsComponent implements OnInit, OnDestroy {
   }
 
   videoUrl(): SafeResourceUrl {
-    return null;
     return this.sanitizer.bypassSecurityTrustResourceUrl( this.pedal.videoUrl );
   }
 }

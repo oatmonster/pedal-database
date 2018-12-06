@@ -1,6 +1,7 @@
 var client = require( '../models/db' );
 
 module.exports.getParts = function ( req, res ) {
+  res.status( 200 );
   if ( req.params.type == 'pedal' ) {
     res.send( [ {
       id: 1,
@@ -10,12 +11,18 @@ module.exports.getParts = function ( req, res ) {
     } ] );
   }
   else if ( req.params.type == 'user' && req.params.id == req.user.id ) {
+    res.status( 200 );
     res.send( [ {
       id: 1,
       type: 'resistor',
       value: '100k R',
       count: '15'
     } ] );
+  }
+  else {
+    res.status( 401 ).send( {
+      "message": "UnauthorizedError: private profile"
+    } );;
   }
 
 
