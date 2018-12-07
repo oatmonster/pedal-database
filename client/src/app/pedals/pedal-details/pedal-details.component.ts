@@ -22,19 +22,15 @@ export class PedalDetailsComponent implements OnInit, OnDestroy {
     private sanitizer: DomSanitizer,
     private location: Location,
     private titleService: Title
-  ) {
-    this.pedal = {
-      id: 1,
-      name: 'asdf'
-    }
-  }
+  ) { }
 
   ngOnInit() {
-    // this.apiService.getPedal( +this.route.snapshot.params[ 'id' ] ).subscribe( res => {
-    //   this.pedal = res;
-    //   this.location.replaceState( '/pedals/' + this.pedal.id + '/' + this.pedal.name );
-    //   this.titleService.setTitle( 'Pedal Database: ' + this.pedal.name );
-    // } );
+    this.apiService.getPedal( +this.route.snapshot.params[ 'id' ] ).subscribe( res => {
+      this.pedal = res;
+      this.pedal.desc = this.apiService.desc;
+      this.location.replaceState( '/pedals/' + this.pedal.id + '/' + this.pedal.name );
+      this.titleService.setTitle( 'Pedal Database: ' + this.pedal.name );
+    } );
   }
 
   ngOnDestroy() {

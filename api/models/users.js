@@ -24,7 +24,6 @@ class User {
     expiry.setDate( expiry.getDate() + 7 );
 
     return jwt.sign( {
-      _id: this._id,
       email: this.email,
       username: this.username,
       exp: parseInt( expiry.getTime() / 1000 ),

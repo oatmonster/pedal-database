@@ -15,7 +15,7 @@ export class PedalListComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.getPedals();
-    this.displayedColumns = [ 'id', 'name' ];
+    this.displayedColumns = [ 'id', 'name', 'type' ];
   }
 
 }

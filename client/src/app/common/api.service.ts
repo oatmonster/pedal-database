@@ -26,7 +26,7 @@ export class ApiService {
   getPedals() {
     if ( !this.pedals ) {
       this.http.get<IPedal[]>( environment.baseUrl + '/api/pedals' ).subscribe( res => {
-        this.pedals = res
+        this.pedals = res;
       } )
     }
   }
@@ -36,7 +36,12 @@ export class ApiService {
   }
 
   getParts( type: 'user' | 'pedal', id: number ) {
-    return this.http.get<IPart[]>( environment.baseUrl + '/api/parts/' + type + '/' + id, { headers: { Authorization: `Bearer ${this.authService.getToken()}` } } );
+    if ( type === 'user' ) {
+      return this.http.get<IPart[]>( environment.baseUrl + '/api/parts/user', { headers: { Authorization: `Bearer ${this.authService.getToken()}` } } );
+    }
+    else {
+      return this.http.get<IPart[]>( environment.baseUrl + '/api/parts/pedal/' + id );
+    }
   }
 
   getUser( username: string ): string {

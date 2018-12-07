@@ -1,10 +1,10 @@
-<!-- <div class="pedal-details"> -->
 <h1>{{pedal?.name}}</h1>
 <hr>
 <div *ngIf="!!pedal && !!pedal.videoUrl" class="embed-responsive embed-responsive-16by9 embed-video">
   <iframe class="embed-responsive-item" [src]="videoUrl()" allowfullscreen></iframe>
 </div>
 <div class="multi-line-text">{{pedal?.desc}}</div>
-
-<part-list *ngIf="!!pedal" [type]="'pedal'" [id]="pedal.id"></part-list>
-<!-- </div> -->
+<div *ngIf="!!pedal">
+  <h3>Parts</h3>
+  <part-list *ngIf="!!pedal" [type]="'pedal'" [id]="pedal.id"></part-list>
+</div>

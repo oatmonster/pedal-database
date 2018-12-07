@@ -1,38 +1,26 @@
 var client = require( '../models/db' );
 
-module.exports.getParts = function ( req, res ) {
-  res.status( 200 );
-  if ( req.params.type == 'pedal' ) {
-    res.send( [ {
-      id: 1,
-      type: 'resistor',
-      value: '100k R',
-      count: '15'
-    } ] );
-  }
-  else if ( req.params.type == 'user' && req.params.id == req.user.id ) {
-    res.status( 200 );
-    res.send( [ {
-      id: 1,
-      type: 'resistor',
-      value: '100k R',
-      count: '15'
-    } ] );
-  }
-  else {
-    res.status( 401 ).send( {
-      "message": "UnauthorizedError: private profile"
-    } );;
-  }
+module.exports.getPedalParts = function ( req, res ) {
 
+  client.query( 'SELECT p.id, p.type, p.value, pp.count FROM parts p JOIN pedal_parts pp ON p.id = pp.part_id where pp.pedal_id = $1;', [ req.params.id ], ( err, result ) => {
+    if ( err ) {
+      console.error( err.stack );
+      res.status( 500 ).send( { "message": "InternalError" } );
+    } else {
+      res.status( 200 );
+      res.send( result.rows );
+    }
+  } );
+}
 
-  // client.query( 'SELECT * FROM pedals', ( err, result ) => {
-  //   if ( err ) {
-  //     console.error( err.stack );
-  //     res.status( 500 );
-  //   } else {
-  //     res.status( 200 );
-  //     res.send( result.rows );
-  //   }
-  // } );
+module.exports.getUserParts = function ( req, res ) {
+  client.query( 'SELECT p.id, p.type, p.value, up.count FROM users u JOIN user_parts up ON u.email = up.user_email JOIN parts p ON p.id = up.part_id WHERE u.email = $1;', [ req.user.email ], ( err, result ) => {
+    if ( err ) {
+      console.error( err.stack );
+      res.status( 500 ).send( { "message": "InternalError" } );
+    } else {
+      res.status( 200 );
+      res.send( result.rows );
+    }
+  } );
 }

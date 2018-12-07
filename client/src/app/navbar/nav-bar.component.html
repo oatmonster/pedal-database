@@ -4,8 +4,7 @@
       <a *ngIf="!authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/login']" routerLinkActive="active">Login</a>
       <a *ngIf="!authService.isLoggedIn()" class="nav-item navbar-text">or</a>
       <a *ngIf="!authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/register']" routerLinkActive="active">Register</a>
-      <a *ngIf="authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user', authService.getUserDetails()?.username]"
-        routerLinkActive="active">{{authService.getUserDetails()?.username}}</a>
+      <a *ngIf="authService.isLoggedIn()" class="nav-item nav-link" [routerLink]="['/user/profile']" routerLinkActive="active">{{authService.getUserDetails()?.username}}</a>
       <a *ngIf="authService.isLoggedIn()" style="cursor: pointer;" class="nav-item nav-link" (click)="authService.logout()"
         routerLinkActive="active">Logout</a>
     </div>
@@ -31,7 +30,8 @@
     </form>
     <div class="navbar-nav mr-auto" data-toggle="collapse" data-target=".navbar-collapse.show">
       <a class="nav-item nav-link" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['']" routerLinkActive="active">Home</a>
-      <a class="nav-item nav-link" [routerLink]="['/pedals']" routerLinkActive="active">All Pedals</a>
+      <a class="nav-item nav-link" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/pedals']"
+        routerLinkActive="active">All Pedals</a>
     </div>
     <hr>
     <form class="form-inline d-none d-md-block">
