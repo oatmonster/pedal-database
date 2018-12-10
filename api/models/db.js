@@ -1,7 +1,7 @@
 const { Client } = require( 'pg' );
 
-//const connectionString = 'postgres://ulzgrkrn:rkSCKEgR3I8sTs4CGyVkPnmVh0lHXip3@stampy.db.elephantsql.com:5432/ulzgrkrn'
-const connectionString = 'postgresql://pedal-database:pedal-database@localhost/pedal-database?connect_timeout=10'
+const connectionString = 'postgres://ulzgrkrn:rkSCKEgR3I8sTs4CGyVkPnmVh0lHXip3@stampy.db.elephantsql.com:5432/ulzgrkrn'
+//const connectionString = 'postgresql://pedal-database:pedal-database@localhost/pedal-database?connect_timeout=10'
 
 const client = new Client( {
   connectionString: connectionString,

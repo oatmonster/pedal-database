@@ -52,6 +52,8 @@ CREATE SEQUENCE schematic_id_seq;
 ALTER TABLE schematics ALTER id SET DEFAULT NEXTVAL('schematic_id_seq');
 
 INSERT INTO schematics(name, type, videoUrl) values('Woolly Mammoth', 'Fuzz', 'https://www.youtube.com/embed/zEodGhAmV6U');
+INSERT INTO schematics(name, type, videoUrl) values('Tremulus Lune', 'Tremolo', 'https://www.youtube.com/embed/_QqpbnI5sOU');
+INSERT INTO schematics(name, type, videoUrl) values('Spring Breeze', 'Delay', 'https://www.youtube.com/embed/vbEKie_WjPw');
 
 INSERT INTO components(type, value) values('Potentiometer', '2k Lin');
 INSERT INTO components(type, value) values('Potentiometer', '500k Lin');
@@ -66,6 +68,13 @@ INSERT INTO components(type, value) values('Capacitor', '0.22');
 INSERT INTO components(type, value) values('Capacitor', '100');
 INSERT INTO components(type, value) values('Capacitor', '0.01');
 INSERT INTO components(type, value) values('Transistor', '2N3904');
+-- 13
+INSERT INTO components(type, value) values('Resistor', '1k');
+INSERT INTO components(type, value) values('Resistor', '220k');
+INSERT INTO components(type, value) values('Resistor', '1M');
+INSERT INTO components(type, value) values('Resistor', '330R');
+INSERT INTO components(type, value) values('Resistor', '2k7');
+INSERT INTO components(type, value) values('Resistor', '470k');
 
 INSERT INTO schematic_components(component_id, schematic_id, schematic_component_count) values
   (1, 1, 1)
@@ -80,7 +89,13 @@ INSERT INTO schematic_components(component_id, schematic_id, schematic_component
   ,(10, 1, 2)
   ,(11, 1, 2)
   ,(12, 1, 2)
-  ,(13, 1, 2);
+  ,(13, 1, 2)
+  ,(14, 2, 2)
+  ,(15, 2, 5)
+  ,(16, 2, 2)
+  ,(17, 2, 1)
+  ,(18, 2, 1)
+  ,(19, 2, 1);
 
   INSERT INTO user_components(component_id, user_email, user_component_count) values
   (1, 'test', 1)
