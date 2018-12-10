@@ -1,4 +1,4 @@
-import { PedalListComponent } from './pedals/pedal-list.component';
+import { PedalsComponent } from './pedals/pedals.component';
 import { PedalDetailsComponent } from './pedals/pedal-details/pedal-details.component';
 import { HomeComponent } from './home/home.component';
 
@@ -6,7 +6,7 @@ export const appRoutes = [
 
   {
     path: 'pedals',
-    component: PedalListComponent,
+    component: PedalsComponent,
   },
   {
     path: 'pedals/:id',

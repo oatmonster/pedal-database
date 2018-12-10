@@ -2,7 +2,15 @@ var client = require( '../models/db' );
 
 module.exports.getPedalParts = function ( req, res ) {
 
-  client.query( 'SELECT p.id, p.type, p.value, pp.count FROM parts p JOIN pedal_parts pp ON p.id = pp.part_id where pp.pedal_id = $1;', [ req.params.id ], ( err, result ) => {
+  const query = `
+    SELECT c.id, c.type, c.value, sc.schematic_component_count AS count
+    FROM components c
+    JOIN schematic_components sc
+    ON c.id = sc.component_id
+    WHERE sc.schematic_id = $1;
+  `;
+
+  client.query( query, [ req.params.id ], ( err, result ) => {
     if ( err ) {
       console.error( err.stack );
       res.status( 500 ).send( { "message": "InternalError" } );
@@ -14,7 +22,17 @@ module.exports.getPedalParts = function ( req, res ) {
 }
 
 module.exports.getUserParts = function ( req, res ) {
-  client.query( 'SELECT p.id, p.type, p.value, up.count FROM users u JOIN user_parts up ON u.email = up.user_email JOIN parts p ON p.id = up.part_id WHERE u.email = $1;', [ req.user.email ], ( err, result ) => {
+
+  const query = `
+    SELECT c.id, c.type, c.value, uc.user_component_count AS count
+    FROM users u 
+    JOIN user_components uc 
+    ON u.email = uc.user_email 
+    JOIN components c ON c.id = uc.component_id 
+    WHERE u.email = $1;
+  `;
+
+  client.query( query, [ req.user.email ], ( err, result ) => {
     if ( err ) {
       console.error( err.stack );
       res.status( 500 ).send( { "message": "InternalError" } );

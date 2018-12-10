@@ -18,7 +18,7 @@ import { PartListComponent } from './part-list/part-list.component';
     PartListComponent,
   ]
 } )
-export class PartModule { }
+export class PartsModule { }
 
 export interface IPart {
   id: number;

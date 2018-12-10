@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 
 import { ApiService } from '../../common/api.service';
-import { IPedal } from '../shared/pedal.model';
+import { IPedal } from '../pedals.module';
 
 @Component( {
   selector: 'pedal-details',

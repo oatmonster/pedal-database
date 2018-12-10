@@ -2,8 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
 
-import { PartModule } from '../part/part.module';
+import { PartsModule } from '../parts/parts.module';
+import { PedalsModule } from '../pedals/pedals.module';
 
 import { ProfileComponent } from './profile.component';
 import { LoginComponent } from './login.component';
@@ -16,7 +18,9 @@ import { userRoutes } from './user.routes';
     CommonModule,
     FormsModule,
     RouterModule.forChild( userRoutes ),
-    PartModule,
+    MatTableModule,
+    PartsModule,
+    PedalsModule,
   ],
   declarations: [
     ProfileComponent,

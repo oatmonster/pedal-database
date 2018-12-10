@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { ApiService } from '../../common/api.service';
-import { IPart } from '../part.module';
+import { IPart } from '../parts.module';
 
 @Component( {
   selector: 'part-list',

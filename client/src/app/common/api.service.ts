@@ -1,8 +1,8 @@
 import { Http } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IPedal } from '../pedals/shared/pedal.model';
-import { IPart } from '../part/part.module';
+import { IPedal } from '../pedals/pedals.module';
+import { IPart } from '../parts/parts.module';
 
 import { AuthService } from './auth.service';
 
@@ -24,20 +24,20 @@ export class ApiService {
   }
 
   getPedals() {
-    if ( !this.pedals ) {
-      this.http.get<IPedal[]>( environment.baseUrl + '/api/pedals' ).subscribe( res => {
-        this.pedals = res;
-      } )
-    }
+    return this.http.get<IPedal[]>( environment.baseUrl + '/api/pedals' );
   }
 
   getPedal( id: number ) {
     return this.http.get<IPedal>( environment.baseUrl + '/api/pedals/' + id );
   }
 
+  getBuildablePedals() {
+    return this.http.get<IPedal[]>( environment.baseUrl + '/api/user/pedals', { headers: { Authorization: `Bearer ${this.authService.getToken()}` } } )
+  }
+
   getParts( type: 'user' | 'pedal', id: number ) {
     if ( type === 'user' ) {
-      return this.http.get<IPart[]>( environment.baseUrl + '/api/parts/user', { headers: { Authorization: `Bearer ${this.authService.getToken()}` } } );
+      return this.http.get<IPart[]>( environment.baseUrl + '/api/user/parts', { headers: { Authorization: `Bearer ${this.authService.getToken()}` } } );
     }
     else {
       return this.http.get<IPart[]>( environment.baseUrl + '/api/parts/pedal/' + id );

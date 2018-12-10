@@ -19,10 +19,14 @@ router.post( '/login', ctrlAuth.login );
 
 // pedals
 router.get( '/pedals', ctrlPedals.getPedals );
+
 router.get( '/pedals/:id', ctrlPedals.getPedal );
 
 // parts
 router.get( '/parts/pedal/:id', ctrlParts.getPedalParts );
-router.get( '/parts/user', auth, ctrlParts.getUserParts );
+
+// user
+router.get( '/user/pedals', auth, ctrlPedals.getBuildablePedals );
+router.get( '/user/parts', auth, ctrlParts.getUserParts );
 
 module.exports = router;
